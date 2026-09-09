@@ -10,10 +10,29 @@ class User(Base):
     __tablename__ = "users"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    phone: Mapped[str] = mapped_column(String(20), unique=True, index=True)
-    full_name: Mapped[str] = mapped_column(String(255))
-    role: Mapped[str] = mapped_column(String(20))
-    status: Mapped[str] = mapped_column(String(20), default="pending")
+
+    phone: Mapped[str] = mapped_column(
+        String(20),
+        unique=True,
+        index=True,
+    )
+
+    full_name: Mapped[str] = mapped_column(
+        String(255),
+    )
+
+    password_hash: Mapped[str] = mapped_column(
+        String(255),
+    )
+
+    role: Mapped[str] = mapped_column(
+        String(20),
+    )
+
+    status: Mapped[str] = mapped_column(
+        String(20),
+        default="pending",
+    )
 
     rating: Mapped[float] = mapped_column(
         Numeric(3, 2),
@@ -35,7 +54,9 @@ class Device(Base):
     __tablename__ = "devices"
 
     id: Mapped[int] = mapped_column(primary_key=True)
+
     user_id: Mapped[int] = mapped_column()
+
     device_id: Mapped[str] = mapped_column(
         String(255),
         unique=True,
@@ -51,8 +72,13 @@ class Squad(Base):
     __tablename__ = "squads"
 
     id: Mapped[int] = mapped_column(primary_key=True)
+
     leader_id: Mapped[int] = mapped_column()
-    name: Mapped[str] = mapped_column(String(100))
+
+    name: Mapped[str] = mapped_column(
+        String(100),
+    )
+
     rating: Mapped[float] = mapped_column(
         Numeric(3, 2),
         default=5.0,

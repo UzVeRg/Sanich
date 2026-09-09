@@ -2,9 +2,10 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
+from auth.router import router as auth_router
 from core.database import init_db
 
-#uvicorn app.main:app --reload --app-dir backend
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await init_db()
@@ -16,6 +17,9 @@ app = FastAPI(
     version="0.1.0.1",
     lifespan=lifespan,
 )
+
+
+app.include_router(auth_router)
 
 
 @app.get("/")
