@@ -1,0 +1,19 @@
+1. База данных + SQLAlchemy
+       ↓
+2. Users + Auth
+       ↓
+3. Projects
+       ↓
+4. Missions
+       ↓
+5. Assignments
+       ↓
+6. QR / Check-in / Check-out
+       ↓
+7. Finance
+       ↓
+8. EXP / Rating
+       ↓
+9. Frontend PWA
+       ↓
+10. Redis / фоновые задачи / уведомления
