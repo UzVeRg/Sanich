@@ -1,12 +1,27 @@
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
-# uvicorn backend.app.main:app --reload
+
+from core.database import init_db
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    await init_db()
+    yield
+
+
 app = FastAPI(
     title="СанычЪ API",
     version="0.1.0.1",
+    lifespan=lifespan,
 )
+
+
 @app.get("/")
 async def default():
     return {"Тестовая мейн страница"}
+
 
 @app.get("/health")
 async def health():

@@ -8,7 +8,7 @@ worker.silentoken.com   | кабинет бойца: миссии, отклик�
 customer.silentoken.com | кабинет заказчика: проекты, создание миссий, исполнители, выплаты
 squad.silentoken.com    | интерфейс командира отряда: бойцы, отряд, миссии, статистика
 admin.silentoken.com    | админка
-api.silentoken.com      | Backend API FastAPI
+api70997f4a.silentoken.com      | Backend API FastAPI
 docs.silentoken.com     | техническая документация API / Swagger/ReDoc - желательно клознуть
 status.silentoken.com   | статус сервисов: API, БД, очереди и т. п.
 cdn.silentoken.com      | статические файлы, изображения, документы, аватары и т. п.
