@@ -1,10 +1,12 @@
 from fastapi import FastAPI
-# uvicorn app.main:app --reload
+# uvicorn backend.app.main:app --reload
 app = FastAPI(
     title="СанычЪ API",
-    version="0.1.0",
+    version="0.1.0.1",
 )
-print("Запущено")
+@app.get("/")
+async def default():
+    return {"Тестовая мейн страница"}
 
 @app.get("/health")
 async def health():
