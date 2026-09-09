@@ -4,6 +4,7 @@ from fastapi import FastAPI
 
 from auth.router import router as auth_router
 from core.database import init_db
+from missions.router import router as missions_router
 
 
 @asynccontextmanager
@@ -20,6 +21,7 @@ app = FastAPI(
 
 
 app.include_router(auth_router)
+app.include_router(missions_router)
 
 
 @app.get("/")
