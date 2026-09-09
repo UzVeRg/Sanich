@@ -30,11 +30,3 @@ async def get_db() -> AsyncGenerator[AsyncSession, None]:
         yield session
 
 
-async def init_db():
-    from users.models import User, Device
-    from users.models import Squad, SquadMember
-    from projects.models import Project
-    from missions.models import Mission, Assignment
-
-    async with engine.begin() as connection:
-        await connection.run_sync(Base.metadata.create_all)

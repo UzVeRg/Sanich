@@ -8,6 +8,8 @@ from sqlalchemy import (
     Integer,
     Numeric,
     String,
+    UniqueConstraint,
+    func,
 )
 from sqlalchemy.dialects.postgresql import ARRAY
 from sqlalchemy.orm import Mapped, mapped_column
@@ -50,12 +52,20 @@ class Mission(Base):
 
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
-        default=datetime.utcnow,
+        server_default=func.now(),
     )
 
 
 class Assignment(Base):
     __tablename__ = "assignments"
+
+    __table_args__ = (
+            UniqueConstraint(
+                "mission_id",
+                "fighter_id",
+                name="uq_assignment_mission_fighter",
+            ),
+    )
 
     id: Mapped[int] = mapped_column(primary_key=True)
 

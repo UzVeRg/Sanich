@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from sqlalchemy import DateTime, Integer, Numeric, String
+from sqlalchemy import DateTime, ForeignKey, Integer, Numeric, String, func
 from sqlalchemy.orm import Mapped, mapped_column
 
 from core.database import Base
@@ -46,7 +46,7 @@ class User(Base):
 
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
-        default=datetime.utcnow,
+        server_default=func.now(),
     )
 
 
@@ -55,7 +55,9 @@ class Device(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
 
-    user_id: Mapped[int] = mapped_column()
+    user_id: Mapped[int] = mapped_column(
+        ForeignKey("users.id"),
+    )
 
     device_id: Mapped[str] = mapped_column(
         String(255),
@@ -64,7 +66,7 @@ class Device(Base):
 
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
-        default=datetime.utcnow,
+        server_default=func.now(),
     )
 
 
@@ -73,7 +75,9 @@ class Squad(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
 
-    leader_id: Mapped[int] = mapped_column()
+    leader_id: Mapped[int] = mapped_column(
+        ForeignKey("users.id"),
+    )
 
     name: Mapped[str] = mapped_column(
         String(100),
@@ -89,9 +93,11 @@ class SquadMember(Base):
     __tablename__ = "squad_members"
 
     squad_id: Mapped[int] = mapped_column(
+        ForeignKey("squads.id"),
         primary_key=True,
     )
-
+    
     user_id: Mapped[int] = mapped_column(
+        ForeignKey("users.id"),
         primary_key=True,
     )
