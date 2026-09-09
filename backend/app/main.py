@@ -4,7 +4,7 @@ from fastapi import FastAPI
 
 from core.database import init_db
 
-
+#uvicorn app.main:app --reload --app-dir backend
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await init_db()
