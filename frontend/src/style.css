@@ -1,0 +1,127 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3f3f3;
+  color: #222;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.container {
+  width: min(1000px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 32px 0 60px;
+}
+
+header {
+  margin-bottom: 24px;
+}
+
+h1,
+h2,
+h3 {
+  margin-top: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  margin: 6px 0;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  background: white;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+label {
+  display: block;
+  margin-top: 8px;
+}
+
+button {
+  padding: 10px 14px;
+  margin-top: 8px;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #222;
+  color: white;
+}
+
+button.secondary {
+  background: #777;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.message {
+  padding: 12px;
+  margin-bottom: 16px;
+  border-radius: 5px;
+}
+
+.success {
+  background: #e5f5e5;
+}
+
+.error {
+  background: #f8e5e5;
+}
+
+.muted {
+  color: #777;
+}
+
+.missions {
+  margin-top: 16px;
+}
+
+.mission {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 14px;
+  margin-top: 10px;
+}
+
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
